@@ -1,3 +1,5 @@
+// www.codewars.com/users/kkorvin
+
 // String incrementer
 
 function incrementString(str) {
@@ -9,3 +11,7 @@ function incrementString(str) {
 }
 
 console.log(incrementString("foobar009999"));
+console.log(incrementString("fo99obar99"));
+console.log(incrementString("foobar000"));
+console.log(incrementString("foobar999"));
+console.log(incrementString("foobar1"));
