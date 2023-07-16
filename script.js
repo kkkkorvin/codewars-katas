@@ -62,7 +62,18 @@ console.log(orderWeight("2 27 14 52 31 96 73 47 22 6"));
 console.log("-------------------First non-repeating character----------------");
 
 function firstNonRepeatingLetter(s) {
-  // Add your code here
+  let lowerStr = s.toLowerCase();
+  for (let i = 0; i < s.length; i++) {
+    if (
+      lowerStr.indexOf(lowerStr.charAt(i)) ==
+      lowerStr.lastIndexOf(lowerStr.charAt(i))
+    )
+      return s.charAt(i);
+  }
+  return "";
 }
 
 console.log(firstNonRepeatingLetter("stress"));
+console.log(firstNonRepeatingLetter("sTrEss"));
+console.log(firstNonRepeatingLetter(""));
+console.log(firstNonRepeatingLetter("XXXX"));
