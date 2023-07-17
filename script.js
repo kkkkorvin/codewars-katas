@@ -77,3 +77,25 @@ console.log(firstNonRepeatingLetter("stress"));
 console.log(firstNonRepeatingLetter("sTrEss"));
 console.log(firstNonRepeatingLetter(""));
 console.log(firstNonRepeatingLetter("XXXX"));
+
+// Scramblies
+console.log("-------------------Scramblies----------------");
+
+function scramble(str1, str2) {
+  let arr1 = str1.split("");
+  const arr2 = str2.split("");
+  for (let i = 0; i < arr2.length; i++) {
+    if (arr1.includes(arr2[i])) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(scramble("rkqodlw", "world"));
+console.log(scramble("cedewaraaossoqqyt", "codewars"));
+console.log(scramble("katas", "steak"));
+console.log(scramble("scriptjaavx", "javascript"));
+console.log(scramble("commas", "commas"));
