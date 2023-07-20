@@ -81,13 +81,28 @@ console.log(firstNonRepeatingLetter("XXXX"));
 // Scramblies
 console.log("-------------------Scramblies----------------");
 
+// TOO SLOW
+
+// function scramble(str1, str2) {
+//   const arr2 = str2.split("");
+//   for (let i = 0; i < arr2.length; i++) {
+//     if (str1.includes(arr2[i])) {
+//       str1 = str1.replace(arr2[i], "_");
+//     } else {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// Fast
 function scramble(str1, str2) {
-  let arr1 = str1.split("");
-  const arr2 = str2.split("");
-  for (let i = 0; i < arr2.length; i++) {
-    if (arr1.includes(arr2[i])) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    } else {
+  let set = [...new Set(str2.split(""))];
+  for (let i = 0; i < set.length; i++) {
+    if (
+      str1.split("").filter((x) => x == set[i]) <
+      str2.split("").filter((x) => x == set[i])
+    ) {
       return false;
     }
   }
@@ -99,3 +114,6 @@ console.log(scramble("cedewaraaossoqqyt", "codewars"));
 console.log(scramble("katas", "steak"));
 console.log(scramble("scriptjaavx", "javascript"));
 console.log(scramble("commas", "commas"));
+console.log(
+  scramble("abcdefghijklmnopqrstuvwxyz".repeat(10_000), "zyxcba".repeat(9_000))
+);
