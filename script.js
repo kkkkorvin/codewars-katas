@@ -117,3 +117,36 @@ console.log(scramble("commas", "commas"));
 console.log(
   scramble("abcdefghijklmnopqrstuvwxyz".repeat(10_000), "zyxcba".repeat(9_000))
 );
+
+// Greed is Good
+
+function score(dice) {
+  dice = dice.sort();
+  let totalScore = 0;
+  for (let i = 0; i < 5; i++) {
+    if (dice[i] == dice[i + 1] && dice[i] == dice[i + 2]) {
+      console.log(`Three of a kind: ${dice[i]}`);
+      if (dice[i] == 1) {
+        totalScore += 1000;
+        dice[i] = dice[i + 1] = dice[i + 2] = 0;
+      } else {
+        totalScore += dice[i] * 100;
+        dice[i] = dice[i + 1] = dice[i + 2] = 0;
+      }
+    }
+    if (dice[i] == 1) {
+      totalScore += 100;
+      dice[i] = 0;
+    }
+    if (dice[i] == 5) {
+      totalScore += 50;
+      dice[i] = 0;
+    }
+  }
+  return totalScore;
+}
+
+console.log(score([2, 3, 4, 6, 2])); // 0
+console.log(score([1, 1, 1, 1, 1])); // 1200
+console.log(score([4, 4, 4, 3, 3])); // 400
+console.log(score([2, 4, 4, 5, 4])); // 450
