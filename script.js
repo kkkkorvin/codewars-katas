@@ -121,6 +121,7 @@ console.log(
 // Greed is Good
 
 function score(dice) {
+  console.log(dice);
   dice = dice.sort();
   let totalScore = 0;
   for (let i = 0; i < 5; i++) {
@@ -146,7 +147,20 @@ function score(dice) {
   return totalScore;
 }
 
-console.log(score([2, 3, 4, 6, 2])); // 0
-console.log(score([1, 1, 1, 1, 1])); // 1200
-console.log(score([4, 4, 4, 3, 3])); // 400
-console.log(score([2, 4, 4, 5, 4])); // 450
+// console.log(score([2, 3, 4, 6, 2])); // 0
+// console.log(score([1, 1, 1, 1, 1])); // 1200
+// console.log(score([4, 4, 4, 3, 3])); // 400
+// console.log(score([2, 4, 4, 5, 4])); // 450
+// console.log(score([6, 6, 6, 6, 6]));
+
+function randomDice() {
+  return [
+    Math.floor(Math.random() * 6 + 1),
+    Math.floor(Math.random() * 6 + 1),
+    Math.floor(Math.random() * 6 + 1),
+    Math.floor(Math.random() * 6 + 1),
+    Math.floor(Math.random() * 6 + 1),
+  ];
+}
+
+console.log(score(randomDice()));
